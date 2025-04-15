@@ -1,6 +1,6 @@
 # S&P 500 Index Forecasting
 
-<img src="images/SP500.png" style="zoom:50%;" />
+<img src="images/SP500.png" style="width:40%;" />
 
 To forecast the S&P 500 Index, I applied both classical **time series analysis** using the ARIMA model and deep learning techniques with **Recurrent Neural Networks (RNN)**, including stacked **LSTM** architectures. The dataset includes daily S&P 500 closing prices from January 2000 to April 1, 2025. These models were evaluated and compared based on their predictive performance and ability to capture underlying market trends.
 
@@ -12,13 +12,13 @@ In the first part of the project, I adopted a **classical time series analysis f
 
 There are **6,349 daily records** of S&P 500 index data spanning from January 2000 to April 1, 2025. For modeling purposes, I used data up to **April 1, 2020** for training and reserved the final five year for testing. 
 
-![](images/train_test.png)
+<img src="images/train_test.png" style="width:60%;" />
 
 Since **stationarity**—a condition where the mean and variance remain constant over time—is a key requirement for ARIMA modeling, and daily stock data tends to be noisy and non-stationary, I resampled the series to **monthly averages** to smooth fluctuations and enable more robust forecasting.
 
 To assess stationarity, I applied the **Augmented Dickey-Fuller (ADF) test**. After performing **first-order differencing** on the monthly training data, the ADF test returned a **p-value below 0.05**, indicating that the differenced series is stationary and suitable for ARIMA modeling. The time series plot of the differenced data is shown below.
 
-![](images/first_differencing.png)
+<img src="images/first_differencing.png" style="width:60%;" />
 
 ### Step 2: ARIMA Model Fitting
 
@@ -34,7 +34,7 @@ To validate the model, I performed diagnostic checks on the **residuals**. The r
 
 These diagnostic results indicate that the ARIMA(4, 1, 5) model is well-specified and suitable for forecasting.
 
-![](images/residuals.png)
+<img src="images/residuals.png" style="width:80%;"/>
 
 ### Step 3: Monthly Forecasting
 
@@ -42,7 +42,7 @@ Leveraging the **ARIMA(4, 1, 5)** model, I forecasted the next **60 monthly valu
 
 The resulting predicted values, along with their confidence intervals, are compared against the actual test data in the following visualization:
 
-![](images/tsa_forecast.png)
+<img src="images/tsa_forecast.png" style="width:70%;"/>
 
 The resulting **Mean Absolute Error (MAE)** is **120.88**, and the **Root Mean Squared Error (RMSE)** is **152.16**.
 
@@ -64,7 +64,7 @@ Consistent with the setup in Part 1, I used data up to **April 1, 2020** for tra
 The RNN model I implemented consists of **two stacked LSTM layers**, each followed by **dropout layers** to reduce overfitting and improve generalization. I chose **LSTM (Long Short-Term Memory)** over Simple RNN (SRN) due to its enhanced ability to capture **long-term dependencies** and mitigate the **vanishing gradient problem**, which is common in traditional RNNs when dealing with longer sequences like financial time series.
 The final model contains a total of **149,957 parameters**, of which **49,985 are trainable**, allowing it to learn complex temporal patterns while maintaining a manageable level of complexity.
 
-![](images/model_param.png)
+<img src="images/model_param.png" style="width:60%;"/>
 
 After proper hyperparameter tuning, the following configuration yielded the **best reduction in training and validation Mean Squared Error (MSE)** across all experimental runs:
 
@@ -76,13 +76,13 @@ After proper hyperparameter tuning, the following configuration yielded the **be
 
 The resulting **training and validation loss** (MSE) over the training epochs are shown below. The **training loss consistently decreases**, while the **validation loss begins to improve significantly after the 6th epoch**, indicating that the model starts to generalize better at that point.
 
-![](images/learning_curve.png)
+<img src="images/learning_curve.png" style="width:60%;"/>
 
 ### Step 3: Daily Forecasting
 
 The resulting predicted values are compared against the actual test data in the following visualization:
 
-![](images/rnn_forecast.png)
+<img src="images/rnn_forecast.png" style="width:80%;"/>
 
 The forecasted values from the LSTM model closely follow the actual test data, demonstrating that **deep learning methods provide significantly improved performance** over classical time series models in this case.
 
