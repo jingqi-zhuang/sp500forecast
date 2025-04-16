@@ -1,8 +1,12 @@
 # S&P 500 Index Forecasting
 
+**Markets are reacting to global shocks—can we predict what’s next for the S&P 500?**
+
 <img src="images/SP500.png" style="width:40%;" />
 
-To forecast the S&P 500 Index, I applied both classical **time series analysis** using the ARIMA model and deep learning techniques with **Recurrent Neural Networks (RNN)**, including stacked **LSTM** architectures. The dataset includes daily S&P 500 closing prices from January 2000 to April 1, 2025. These models were evaluated and compared based on their predictive performance and ability to capture underlying market trends.
+With events like Trump’s tariffs sending ripples through the financial world, understanding and forecasting market movements is more important than ever.
+
+In this project, I tackled the challenge of predicting the S&P 500 Index using both classical ARIMA time series models and deep learning approaches with Recurrent Neural Networks (RNN), including stacked LSTM architectures. Using daily closing price data from January 2000 to April 1, 2025, I compared these models on their ability to forecast future trends and capture the complex dynamics of the stock market.
 
 ## Part 1: Time Series Analysis
 
